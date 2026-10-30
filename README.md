@@ -1,45 +1,37 @@
-# Merca Stay: the unofficial Holiday Department
+# Six Keys: an unofficial fan page about Merca Stay
 
-An affectionate personal parody made for Jordi. This is not the official Merca Stay website and does not imply Marc's or the company's endorsement.
+An affectionate comic fan page about Marc and his six holiday flats in Barcelona and Sitges, made by Jordi. It is not the official Merca Stay website. It is not affiliated with Merca Stay SLU and implies no endorsement. To book a flat, use the official site: [merca-stay-apartments.com](https://www.merca-stay-apartments.com/).
+
+Live page: https://georgestam.github.io/merca-stay-unofficial/
 
 ## What's here
 
-- A responsive static page with original vector artwork and a local holiday-excuse generator.
-- An original 60-second 1920 × 1080, 30 fps motion-graphics film, with a synthesised instrumental soundtrack.
-- Timed English visual descriptions and a readable transcript. Playback is visitor-initiated.
-- The complete [adapted creative prompt and storyboard](showreel-prompt.md).
-- Reproducible animation and music source in `film/`.
+- `index.html`, `css/`, `js/`, `fonts/` and `favicon.svg`: the page. It is static, with no build step, analytics, cookies or remote scripts. The fonts are self-hosted.
+- `film/`: two films, a 60 second cut and a 120 second director's cut, as 1920 × 1080 web copies at 30 frames a second, with English captions and posters. A film plays only when a visitor presses play.
+- `img/`: photos of the six flats (`p-*`) from Merca Stay's own website, and the cartoons (`c-*`).
+- `v1/`: the first version of this page, kept as it was, with its 60 second music-only film and the film's source.
 
-No booking form, analytics, cookies, remote scripts or private source materials. The fictional department, job titles and jokes are clearly labelled. Artwork depicts imaginary architecture, not actual properties. The film does not use anyone's likeness or voice.
+## Labels
 
-## Public factual sources
+Every claim on the page carries one label.
 
-- [Merca Stay Apartments](https://www.merca-stay-apartments.com/): names of its Barcelona and Sitges apartments.
-- [Marc Mercadé Soler](https://es.linkedin.com/in/marc-mercad%C3%A9-soler-4b096513): public professional identity.
+- **FACT:** from a public source, listed in the page's Sources section.
+- **FOLKLORE:** something people say, not checked as true.
+- **OUR JOKE:** made up by us, for laughs.
+- **DRAMATISED:** a real thing, told bigger than life.
+- **IMAGINED:** pure invention.
 
-Checked 30 October 2026. For current facilities, availability and bookings, use the real business's website. No guest quotes, ratings, prices or service promises have been invented.
+The facts were checked on 30 October 2026. For current flats, prices and availability, ask Merca Stay directly.
+
+## Credits
+
+- **Narration:** the Jaclyn voice, made with ElevenLabs.
+- **Music:** "Fireworks" by Alexander Nakarada, CC0, via FreePD.
+- **Photos:** © Merca Stay, from its official website.
+- **Cartoons:** generated with Gemini 3 Pro Image. They stand in for the host, and no real face appears anywhere on the page.
+- **Fonts:** Fraunces and Inter, under the SIL Open Font License.
+- **Made by** Jordi.
 
 ## Local preview
 
-Run `python3 -m http.server 48731 --bind 127.0.0.1` from this folder, then open `http://127.0.0.1:48731/`.
-
-## Rebuild the film
-
-Prerequisites: Node.js, the pinned Playwright dependency with Chromium installed, Python 3 with numpy, and ffmpeg. The renderer permits localhost requests only. It closes its isolated browser when complete.
-
-1. Start the local preview server.
-2. Run `RENDER_DIR=render npm run render`.
-3. Run `python3 film/music.py render/music.wav`.
-4. Assemble the picture and original music:
-
-```sh
-ffmpeg -y -f concat -safe 0 -i render/concat.txt -i render/music.wav \
-  -c:v copy -c:a aac -ar 48000 -b:a 160k -af loudnorm=I=-19:TP=-2:LRA=8 \
-  -t 60 -movflags +faststart assets/merca-stay-showreel.mp4
-```
-
-The shipped website needs no build step. GitHub Pages can serve the repository root on `main`.
-
-## Creative credits
-
-Concept commissioned by Jordi. Original copy, vector artwork, motion code and synthesised score produced for this tribute. The format adapts Jordi's earlier minimalist motion-design showreel brief. No original company footage, music or internal documents are included.
+Run `python3 -m http.server 48731 --bind 127.0.0.1` in this folder, then open http://127.0.0.1:48731/.
