@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 720" role="img" aria-labelledby="title desc">
+<title id="title">A small holiday, with unusually large ambition</title><desc id="desc">An original imaginary Mediterranean apartment, a striped parasol and a suitcase wearing sunglasses. This illustration does not depict an actual Merca Stay property.</desc>
+<defs><pattern id="tile" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M0 0h36v36H0z" fill="#f1c3a3"/><path d="m0 18 18-18 18 18-18 18Z" fill="none" stroke="#dd9a7e" stroke-width="1"/></pattern><clipPath id="arch"><path d="M390 218a69 69 0 0 1 138 0v227H390Z"/></clipPath></defs>
+<path fill="#c8e4e0" d="M0 0h700v720H0z"/>
+<circle cx="559" cy="116" r="62" fill="#f6b743"/>
+<path d="M0 387c105-35 185-10 300 14s275-37 400-12v148H0Z" fill="#2d827b"/>
+<path d="M0 417c100-18 157 9 252 16m65-3c104-15 224-20 345-9M30 466c176 9 223-25 389-8m40 8 175-8" fill="none" stroke="#a6d5cc" stroke-width="3"/>
+<path fill="url(#tile)" d="m0 493 700-43v270H0z"/>
+<path d="M256 133h312v381H256Z" fill="#eedcc2"/>
+<path d="M568 133h48v381h-48Z" fill="#d7b49d"/>
+<path d="m235 133 40-37h300l41 37Z" fill="#b3513a"/>
+<path d="M287 177h64v108h-64Z" fill="#24635f"/>
+<path d="M303 179v104m16-104v104m17-104v104" stroke="#4d8a7d" stroke-width="4"/>
+<path d="M287 312h64v112h-64Z" fill="#24635f"/>
+<path d="M303 314v108m16-108v108m17-108v108" stroke="#4d8a7d" stroke-width="4"/>
+<path d="M390 218a69 69 0 0 1 138 0v227H390Z" fill="#e5a377"/>
+<g clip-path="url(#arch)"><path d="M392 152h63v300h-63Z" fill="#173f3c"/><path d="M454 152h8v300h-8Z" fill="#f9e9cd"/><path d="m463 154 65 0v297h-38q-32-170-27-297" fill="#fff3df"/><path d="M390 373h137v74H390Z" fill="#db7257"/></g>
+<path d="M380 449h159v12H380Zm7 12v33m20-33v33m21-33v33m21-33v33m21-33v33m21-33v33m21-33v33m20-33v33m-149 0h151" fill="none" stroke="#254441" stroke-width="6"/>
+<rect x="280" y="455" width="77" height="34" rx="2" fill="#ae4c32"/><path d="M318 460c-44-25-27-55 0-27-16-52 21-64 8-8 36-32 49-5 0 28" fill="#356c45"/>
+<ellipse cx="168" cy="642" rx="116" ry="14" fill="#9d7966" opacity=".23"/>
+<path d="m110 336 9 271" stroke="#734b2e" stroke-width="7"/>
+<path d="M9 345q107-159 214-7Z" fill="#f8f0d8"/><path d="M9 345q57-145 103-151Q78 282 80 343Zm103-151q66 26 111 144l-72 2q-2-95-39-146" fill="#d65234"/>
+<g transform="rotate(-7 181 571)"><rect x="146" y="491" width="61" height="41" rx="12" fill="none" stroke="#173f3c" stroke-width="8"/><rect x="111" y="518" width="133" height="129" rx="23" fill="#efaa37" stroke="#173f3c" stroke-width="4"/><path d="M132 533v99m25-99v99m24-99v99m24-99v99m21-99v99" stroke="#d38c23" stroke-width="3"/><path d="M106 548q63-10 140-1" fill="none" stroke="#173f3c" stroke-width="5"/><path d="M131 545h37v23q-18 10-33-3Zm56 0h37l-4 21q-17 12-33 2Z" fill="#173f3c"/><path d="M164 553h26" stroke="#173f3c" stroke-width="5"/><path d="M165 592q15 14 29-1" fill="none" stroke="#173f3c" stroke-width="3" stroke-linecap="round"/><circle cx="133" cy="651" r="8" fill="#173f3c"/><circle cx="221" cy="651" r="8" fill="#173f3c"/><path d="m231 574 29 9-14 40-29-9Z" fill="#f8f0d8"/><path d="m236 590 11 4m-15 5 11 4" stroke="#d65234" stroke-width="3"/></g>
+<g transform="translate(426 573) rotate(8)"><path d="M0 0h140v69H0Z" fill="#fff5e3"/><path d="M20 0h16v69H20Zm36 0h16v69H56Zm36 0h16v69H92" fill="#2d827b"/><path d="M0 70h140" stroke="#fff5e3" stroke-width="9" stroke-dasharray="4 4"/></g>
+<g fill="#254441"><path d="M135 113q12-16 26 0 11-15 25-2-27-5-27 8-7-14-24-6"/><path d="M66 167q9-12 19 0 9-12 20-2-20-3-20 6-6-10-19-4"/></g>
+</svg>

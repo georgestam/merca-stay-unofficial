@@ -1,0 +1,13 @@
+{
+  "name": "merca-stay-unofficial",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An affectionate personal holiday parody and original motion-graphics film.",
+  "type": "module",
+  "devDependencies": {
+    "playwright": "1.58.2"
+  },
+  "scripts": {
+    "render": "node film/render.mjs"
+  }
+}

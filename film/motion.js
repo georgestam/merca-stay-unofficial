@@ -1,0 +1,36 @@
+'use strict';
+// Deterministic, entirely original vector motion graphics. One render at any t.
+const cv=document.querySelector('canvas'),c=cv.getContext('2d');
+const P={cream:'#fff8e9',ink:'#173f3c',coral:'#f06b48',yellow:'#efb53d',teal:'#c8e4e0',green:'#2d827b'};
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+function rounded(x,y,w,h,r,fill){c.fillStyle=fill;c.beginPath();c.roundRect(x,y,w,h,r);c.fill()}
+function circle(x,y,r,fill){c.fillStyle=fill;c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fill()}
+function line(x1,y1,x2,y2,color,width=2){c.strokeStyle=color;c.lineWidth=width;c.lineCap='round';c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke()}
+function text(s,x,y,size=55,col=P.ink,serif=false,align='left'){c.fillStyle=col;c.font=`${serif?'normal':'700'} ${size}px ${serif?'Georgia':'Arial'}`;c.textAlign=align;c.textBaseline='alphabetic';c.fillText(s,x,y)}
+function tag(s,x,y,fill=P.yellow){c.save();c.translate(x,y);c.font='700 23px Arial';const w=Math.max(220,c.measureText(s).width+40);rounded(-w/2,-33,w,66,4,fill);text(s,0,10,23,P.ink,false,'center');c.restore()}
+function suitcase(x,y,size=1,rot=0){c.save();c.translate(x,y);c.scale(size,size);c.rotate(rot);c.strokeStyle=P.ink;c.lineWidth=10;c.beginPath();c.roundRect(-42,-133,84,55,16);c.stroke();rounded(-100,-100,200,220,30,P.yellow);c.strokeStyle=P.ink;c.lineWidth=4;c.strokeRect(-78,-80,156,179);for(let i=-48;i<80;i+=32)line(i,-77,i,95,'#d99926',3);rounded(-77,-49,65,47,10,P.ink);rounded(12,-49,65,47,10,P.ink);line(-20,-38,20,-38,P.ink,6);c.strokeStyle=P.ink;c.lineWidth=5;c.beginPath();c.arc(0,28,21,0,Math.PI);c.stroke();circle(-66,125,13,P.ink);circle(66,125,13,P.ink);tag('OFF DUTY',74,71,P.cream);c.restore()}
+function sun(x,y,r,t,fill=P.yellow){c.save();c.translate(x,y);c.rotate(t*.035);for(let i=0;i<12;i++){let a=i*Math.PI/6;line(Math.cos(a)*(r+23),Math.sin(a)*(r+23),Math.cos(a)*(r+50),Math.sin(a)*(r+50),fill,10)}circle(0,0,r,fill);c.restore()}
+function arch(x,y,w,h,color){c.fillStyle=color;c.beginPath();c.moveTo(x,y+h);c.lineTo(x,y+w/2);c.arc(x+w/2,y+w/2,w/2,Math.PI,0);c.lineTo(x+w,y+h);c.closePath();c.fill()}
+function building(x,y,w,h,col){rounded(x,y,w,h,0,col);for(let yy=y+45;yy<y+h-45;yy+=90){for(let xx=x+32;xx<x+w-28;xx+=65){arch(xx,yy,35,60,P.ink);line(xx-4,yy+62,xx+39,yy+62,P.cream,5)}}}
+function coffee(x,y,s=1){c.save();c.translate(x,y);c.scale(s,s);c.strokeStyle=P.cream;c.lineWidth=16;c.beginPath();c.arc(88,-27,34,-Math.PI/2,Math.PI/2);c.stroke();rounded(-85,-90,170,140,35,P.cream);c.fillStyle=P.ink;c.beginPath();c.ellipse(0,-84,82,22,0,0,Math.PI*2);c.fill();c.fillStyle=P.yellow;c.beginPath();c.ellipse(0,62,120,18,0,0,Math.PI*2);c.fill();c.restore()}
+function waves(t,y,col){c.fillStyle=col;c.beginPath();c.moveTo(0,1080);c.lineTo(0,y);for(let x=0;x<=1920;x+=20)c.lineTo(x,y+Math.sin(x*.006+t)*22);c.lineTo(1920,1080);c.fill()}
+function caption(lines,u,color=P.ink,size=100){let e=ease(u/1.1);c.save();c.globalAlpha=e;c.translate(0,(1-e)*60);lines.forEach((l,i)=>text(l,135,340+i*size*1.13,size,color,true));c.restore()}
+const palettes=[P.cream,P.coral,P.ink,P.teal,P.teal,P.yellow,P.cream,P.ink];
+function renderScene(n,u,t){let enter=ease(u/1.2);c.fillStyle=palettes[n];c.fillRect(0,0,1920,1080);
+ if(n===0){text('THE UNOFFICIAL HOLIDAY DEPARTMENT',135,150,23);caption(['You have','1 new holiday.'],u,P.ink,110);let f=ease((u-1.4)/1.2);c.save();c.translate(1400,550);c.rotate((1-f)*-.12);c.globalAlpha=1-f;rounded(-170,-110,340,220,15,P.ink);line(-160,-95,0,25,P.cream,5);line(160,-95,0,25,P.cream,5);c.restore();c.save();c.globalAlpha=f;suitcase(1400,540+Math.sin(t*1.5)*9,1.7,Math.sin(t)*.045);c.restore();text('Your inbox can wait.',138,730,30);circle(1630,320,44,P.coral);text('1',1630,336,40,P.cream,false,'center');}
+ if(n===1){caption(['Marc,','we made you','a department.'],u,P.ink,100);for(let i=0;i<3;i++){let e=ease((u-.6-i*.25)/1.1);arch(1100+i*185,330+(1-e)*340,145,400,[P.cream,P.yellow,P.teal][i]);circle(1216+i*185,620+(1-e)*340,7,P.ink)}tag('ENTIRELY FICTIONAL',1420,825,P.cream);}
+ if(n===2){caption(['The sun','handles','lighting.'],u,P.cream,110);sun(1410,535,145*enter,t);c.save();c.translate(1410,535);c.rotate(-.15);rounded(-150,-30,120,55,8,P.cream);rounded(30,-30,120,55,8,P.cream);line(-30,-7,30,-7,P.cream,9);c.restore();text('Excellent availability. Works outdoors.',138,820,28,P.cream);}
+ if(n===3){caption(['Barcelona.','Out of office.'],u,P.ink,105);sun(1580,220,65,t);for(let i=0;i<3;i++){let e=ease((u-.2-i*.2)/1.3);building(1120+i*190,450+(1-e)*450,170,420,[P.coral,P.cream,P.yellow][i])}coffee(890,795+Math.sin(u*2)*5,1.1*ease((u-2)/1));text('Culture. Coffee. Repeat.',138,695,32);}
+ if(n===4){sun(1480,240,84,t);waves(t,740,P.green);waves(t+1,850,P.ink);caption(['Sitges.','Into the blue.'],u,P.ink,110);text('A meeting with the horizon.',138,685,32);suitcase(1420,630,1.1,.22);line(1590,400,1590,790,P.ink,9);c.fillStyle=P.coral;c.beginPath();c.moveTo(1370,425);c.quadraticCurveTo(1590,115,1810,425);c.closePath();c.fill();c.fillStyle=P.cream;c.beginPath();c.moveTo(1510,425);c.quadraticCurveTo(1520,250,1590,270);c.quadraticCurveTo(1660,290,1670,425);c.fill();}
+ if(n===5){caption(['The cushion','will chair','this meeting.'],u,P.ink,100);let x=1430,y=580;rounded(x-130,y-170,260,300,18,P.ink);line(x-100,y+110,x-135,y+330,P.ink,22);line(x+100,y+110,x+135,y+330,P.ink,22);let e=ease((u-1.4)/1.4),b=Math.sin(clamp((u-1.4)/1.4)*Math.PI)*-110;c.save();c.translate(x,y-20+b-(1-e)*350);c.rotate((1-e)*.3);rounded(-170,-90,340,190,55,P.coral);c.strokeStyle='#ab3922';c.lineWidth=3;c.beginPath();c.roundRect(-151,-72,302,154,40);c.stroke();circle(-44,-8,7,P.ink);circle(44,-8,7,P.ink);line(-14,35,14,35,P.ink,5);c.restore();tag('ACTION ITEMS: 0',1430,925,P.cream);}
+ if(n===6){caption(['Your five-year plan?','Five more minutes.'],u,P.ink,90);const by=725;line(1130,470,1110,870,P.ink,12);line(1690,470,1710,870,P.ink,12);c.fillStyle=P.coral;c.beginPath();c.moveTo(1130,500);c.quadraticCurveTo(1410,940+Math.sin(u*1.3)*15,1690,500);c.quadraticCurveTo(1410,710+Math.sin(u*1.3)*15,1130,500);c.fill();for(let i=0;i<5;i++){let x=270+i*105;circle(x,by+Math.sin(u*1.3+i*.55)*14,24,i===4?P.coral:P.yellow)}text('An ambitious strategy for doing less.',138,910,29);}
+ if(n===7){c.save();c.globalAlpha=enter;text('MERCA STAY',135,200,30,P.yellow);caption(['The art of doing','absolutely','nothing.'],u,P.cream,112);text('Made by Jordi. With affection.',138,825,34,P.cream);sun(1510,310,92,t);arch(1210,415,330,425,P.coral);arch(1280,480,190,360,P.cream);suitcase(1585,740,1.25,-.13);waves(t,960,P.green);c.restore();}
+ // Constant accessible plain-language disclosure and scene progress.
+ const light=[2,7].includes(n),col=light?P.cream:P.ink;
+ text('UNOFFICIAL AFFECTIONATE PARODY',135,1012,19,col);
+ text(String(n+1).padStart(2,'0')+' / 08',1785,1012,20,col,false,'right');
+ c.globalAlpha=.25;line(135,1040,1785,1040,col,2);c.globalAlpha=1;line(135,1040,135+1650*clamp(t/60),1040,col,3);
+}
+window.renderAt=function(t){t=clamp(t,0,59.999);const n=Math.floor(t/7.5),u=t-n*7.5;c.save();renderScene(n,u,t);if(u<.32&&n>0){c.fillStyle=palettes[n-1];c.fillRect(1920*ease(u/.32),0,1920,1080)}c.restore();return true};
+window.ready=Promise.resolve(true);window.renderAt(57);
