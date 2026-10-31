@@ -55,6 +55,8 @@ button { font: inherit; }
 .lede { font-size: clamp(1.08rem, 1rem + .35vw, 1.25rem); color: var(--ink-2); max-width: 62ch; }
 .small { font-size: .88rem; color: var(--ink-3); }
 .strong { font-weight: 700; }
+.nw { white-space: nowrap; }
+.star-f { width: .92em; height: .92em; fill: currentColor; vertical-align: -.06em; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .ic { width: 1.25em; height: 1.25em; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: .86rem; overflow-wrap: anywhere; }
@@ -147,6 +149,8 @@ main:focus { outline: none; }
 input, select, textarea { min-width: 0; font: inherit; color: var(--ink); background: #fff; border: 1.5px solid #8a7d6c; border-radius: 12px; padding: .7em .9em; width: 100%; min-height: 48px; }
 textarea { resize: vertical; min-height: 120px; }
 input[type="date"] { position: relative; padding-inline: .7em 2.3em; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23584a41' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E") no-repeat right .75em center / 18px; }
+/* one height for dates and dropdowns, so the labels in a row line up (Chromium and WebKit drew dates 2-4 px taller) */
+input[type="date"], select { height: 3.3rem; }
 input[type="date"]::-webkit-calendar-picker-indicator { position: absolute; top: 0; right: 0; width: 2.3em; height: 100%; margin: 0; padding: 0; opacity: 0; cursor: pointer; }
 /* Firefox keeps its own calendar button */
 @supports (-moz-appearance: none) { input[type="date"] { padding-inline: .6em; background-image: none; } }
@@ -271,8 +275,8 @@ html:not(.js) .compose-form { display: none; }
 .postcard blockquote { margin: 0; }
 .postcard blockquote p { font: 400 1.22rem/1.38 var(--serif); margin: 0; }
 .postcard.pc-lg blockquote p { font-size: clamp(1.4rem, 1.1rem + 1vw, 1.95rem); line-height: 1.25; }
-.postcard figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; font-size: .92rem; border-top: 1px dashed var(--line); padding-top: 14px; }
-.postcard figcaption > span:nth-child(2) { display: flex; flex-direction: column; line-height: 1.3; }
+.postcard figcaption { display: flex; flex-wrap: nowrap; align-items: center; gap: 10px 12px; font-size: .92rem; border-top: 1px dashed var(--line); padding-top: 14px; }
+.postcard figcaption > span:nth-child(2) { display: flex; flex-direction: column; line-height: 1.3; min-width: 0; }
 .pc-date { color: var(--ink-3); font-size: .85rem; }
 .postcard .more { margin-left: auto; font-size: .88rem; font-weight: 600; }
 .stamp { float: right; position: relative; margin: 0 -4px 10px 16px; width: 50px; height: 58px; display: grid; place-items: center; border: 2px dashed #c9bba5; border-radius: 4px; background: var(--paper); transform: rotate(4deg); }
@@ -437,7 +441,7 @@ html:not(.js) .compose-form { display: none; }
 .sus-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
 .sus-grid li { display: flex; flex-direction: column; gap: 12px; background: var(--card); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
 .sus-grid .ic { width: 34px; height: 34px; color: var(--sea); }
-.sus-grid h2 { font-size: 1.7rem; margin: 0; }
+.sus-grid h2 { font-size: 1.7rem; margin: 0 0 .35em; }
 .sus-grid p { margin: 0; color: var(--ink-2); }
 .badge-line { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin: 36px 0 88px; color: var(--ink-2); }
 .badge-line img { border-radius: 8px; }
