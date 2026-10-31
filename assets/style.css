@@ -63,6 +63,8 @@ button { font: inherit; }
 /* skip link and concept bar */
 .skip { position: absolute; left: 12px; top: -200px; z-index: 100; background: var(--ink); color: #fff; padding: .75em 1.1em; border-radius: 10px; font-weight: 600; --focus: #ffd27a; }
 .skip:focus { top: 12px; }
+/* the skip link moves focus onto main itself, which needs no ring of its own: the next Tab lands on the first link inside */
+main:focus { outline: none; }
 .concept-bar { background: var(--night); color: #e9e2d8; font-size: .8rem; text-align: center; padding: .55em 16px; --focus: #ffd27a; }
 .concept-bar p { margin: 0; }
 .concept-bar a { color: #fff; }
