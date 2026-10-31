@@ -70,6 +70,9 @@ main:focus { outline: none; }
 .concept-bar { background: var(--night); color: #e9e2d8; font-size: .8rem; text-align: center; padding: .55em 16px; --focus: #ffd27a; }
 .concept-bar p { margin: 0; }
 .concept-bar a { color: #fff; }
+/* Marc's face as a banner at the very top of the home page: it scrolls away, the header below stays sticky */
+.marc-banner { display: flex; justify-content: center; background: var(--paper-2); padding: clamp(12px, 1.6vw, 20px) 16px; }
+.marc-banner img { width: clamp(120px, 14vw, 180px); border-radius: 50%; box-shadow: 0 0 0 4px var(--card), var(--shadow); }
 
 /* header */
 .site-header { position: sticky; top: 0; z-index: 50; background: rgba(246, 241, 233, .92); backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px); border-bottom: 1px solid rgba(88, 74, 65, .12); }
