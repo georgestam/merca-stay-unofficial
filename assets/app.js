@@ -359,6 +359,34 @@
     let lang = 'all';
     let shown = per;
     const matching = () => all.filter(li => lang === 'all' || li.dataset.lang === lang);
+    // Masonry: with two or more columns each card spans as many 4 px rows as its height needs, so a
+    // short review leaves no hole under it (second review). One column, or no ResizeObserver, keeps the plain grid.
+    const ROW = 4;
+    const roOK = 'ResizeObserver' in window;
+    let gap = 0;
+    const span = h => `span ${Math.ceil((h + gap) / ROW)}`;
+    const pack = () => {
+      const cs = getComputedStyle(list);
+      gap = parseFloat(cs.columnGap) || 0;
+      const on = roOK && cs.gridTemplateColumns.trim().split(/\s+/).length > 1;
+      list.classList.toggle('masonry', on);
+      const vis = on ? all.filter(li => !li.hidden) : [];
+      const hs = vis.map(li => li.getBoundingClientRect().height);
+      all.forEach(li => { li.style.gridRowEnd = ''; });
+      vis.forEach((li, i) => { li.style.gridRowEnd = span(hs[i]); });
+    };
+    if (roOK) {
+      // a card that changes height later (fonts, text zoom) gets a new span; its own height never depends on it
+      const ro = new ResizeObserver(es => {
+        if (!list.classList.contains('masonry')) return;
+        es.forEach(({ target: li, borderBoxSize: b }) => {
+          if (!li.hidden) li.style.gridRowEnd = span(b && b[0] ? b[0].blockSize : li.getBoundingClientRect().height);
+        });
+      });
+      all.forEach(li => ro.observe(li));
+      let w = list.clientWidth;
+      addEventListener('resize', () => { if (list.clientWidth !== w) { w = list.clientWidth; pack(); } });
+    }
     const apply = announce => {
       const m = matching();
       all.forEach(li => { li.hidden = true; });
@@ -369,6 +397,7 @@
         more.textContent = `Show more reviews (${m.length - visible} more)`;
       }
       if (announce && status) status.textContent = `Showing ${visible} of ${m.length} reviews.`;
+      pack();
     };
     chips.forEach(btn => btn.addEventListener('click', () => {
       chips.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
