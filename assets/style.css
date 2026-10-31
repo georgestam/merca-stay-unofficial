@@ -161,6 +161,13 @@ input[type="date"]::-webkit-calendar-picker-indicator { position: absolute; top:
   input[type="date"][data-empty]:not(:focus)::-webkit-datetime-edit { color: transparent; -webkit-text-fill-color: transparent; }
   input[type="date"][data-empty]:not(:focus)::before { content: "Choose a date"; position: absolute; left: .75em; top: 50%; transform: translateY(-50%); color: var(--ink-3); pointer-events: none; }
 }
+/* iPhone and iPad Safari give the native date field a built-in minimum width, so it burst out of its box, stood 78 px tall
+   and pushed every page with dates sideways (Jordi, 31 October 2026). Without the native look it fits its column like the
+   other fields. Tapping it still opens the phone's date picker. */
+@supports (-webkit-touch-callout: none) {
+  input[type="date"] { -webkit-appearance: none; appearance: none; display: block; max-width: 100%; text-align: left; }
+  input[type="date"]::-webkit-date-and-time-value { text-align: left; margin: 0; }
+}
 select { appearance: none; -webkit-appearance: none; padding-right: 2.4em; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23584a41' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .8em center; background-size: 18px; }
 input:focus, select:focus, textarea:focus { outline: 3px solid var(--focus); outline-offset: 1px; border-color: var(--sea); }
 [aria-invalid="true"] { border-color: #b3261e; border-width: 2px; }

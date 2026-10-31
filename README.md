@@ -18,7 +18,7 @@ The availability and enquiry forms send nothing from this site and store nothing
 ## Credits
 
 - **Photos:** © Merca Stay, from its official website, with its watermarks as published. Two street photos on the 2 de Mayo page have the passers-by's faces softened, and the flamenco photo is cropped to the dancer's hand and shawl.
-- **Cartoons of the host:** AI-generated illustrations. The host's real face appears nowhere on the site or in the film.
+- **Cartoon of the host:** an AI-generated illustration drawn from the host's photo on the official contact page. The photo itself appears nowhere on the site or in the film.
 - **Film voices:** the ElevenLabs voices Bill (the announcer) and Alice (the small print).
 - **Film music and sound effects:** generated with ElevenLabs Music and Sound Effects through fal.ai.
 - **Fonts:** Instrument Sans and Instrument Serif, under the SIL Open Font License.
