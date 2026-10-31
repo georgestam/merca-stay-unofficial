@@ -1,35 +1,28 @@
-# Six Keys: an unofficial fan page about Merca Stay
+# Merca Stay: an unofficial redesign concept
 
-An affectionate comic fan page about Marc and his six holiday flats in Barcelona and Sitges, made by Jordi. It is not the official Merca Stay website. It is not affiliated with Merca Stay SLU and implies no endorsement. To book a flat, use the official site: [merca-stay-apartments.com](https://www.merca-stay-apartments.com/).
+An unofficial redesign concept of [merca-stay-apartments.com](https://www.merca-stay-apartments.com/), made by Jordi. It is not the official Merca Stay website, it is not affiliated with Merca Stay SLU and it implies no endorsement. To book a flat, use the official site or contact Merca Stay directly.
 
 Live page: https://georgestam.github.io/merca-stay-unofficial/
 
 ## What's here
 
-- `index.html`, `css/`, `js/`, `fonts/` and `favicon.svg`: the page. It is static, with no build step, analytics, cookies or remote scripts. The fonts are self-hosted.
-- `film/`: two films, a 60 second cut and a 120 second director's cut, as 1920 × 1080 web copies at 30 frames a second, with English captions and posters. A film plays only when a visitor presses play.
-- `img/`: photos of the six flats (`p-*`) from Merca Stay's own website, and the cartoons (`c-*`).
-- `v1/`: the first version of this page, kept as it was, with its 60 second music-only film and the film's source.
+- The site, at the root: the home page, a page for each of the six flats, and Book, Services, Sustainability, House rules, Owners, Guide, Reviews, Contact, Privacy, Sources and a 404 page. It is static HTML, CSS and one small script, with no analytics, cookies or remote scripts. The fonts are self-hosted.
+- `film/`: "But wait, there's more!", an 82 second infomercial concept film (1920 × 1080, 30 frames a second) with the captions built into the picture, a poster, and a full transcript under the player on the home page. It is a concept made for this redesign, not a Merca Stay production. It plays only when a visitor presses play.
+- `v2/`: the previous page, "Six Keys", kept as it was, with its two films.
+- `v1/`: the first version, kept as it was.
 
-## Labels
+## Forms
 
-Every claim on the page carries one label.
-
-- **FACT:** from a public source, listed in the page's Sources section.
-- **FOLKLORE:** something people say, not checked as true.
-- **OUR JOKE:** made up by us, for laughs.
-- **DRAMATISED:** a real thing, told bigger than life.
-- **IMAGINED:** pure invention.
-
-The facts were checked on 30 October 2026. For current flats, prices and availability, ask Merca Stay directly.
+The availability and enquiry forms send nothing from this site and store nothing. They write the message for the visitor, who sends it to Marc themselves by WhatsApp or email. The contact details are the ones on the official site.
 
 ## Credits
 
-- **Narration:** the Jaclyn voice, made with ElevenLabs.
-- **Music:** "Fireworks" by Alexander Nakarada, CC0, via FreePD.
-- **Photos:** © Merca Stay, from its official website.
-- **Cartoons:** generated with Gemini 3 Pro Image. They stand in for the host, and no real face appears anywhere on the page.
-- **Fonts:** Fraunces and Inter, under the SIL Open Font License.
+- **Photos:** © Merca Stay, from its official website, with its watermarks as published.
+- **Cartoons of the host:** AI-generated illustrations. No real face appears anywhere on the site or in the film.
+- **Film voices:** the ElevenLabs voices Bill (the announcer) and Alice (the small print).
+- **Film music and sound effects:** generated with ElevenLabs Music and Sound Effects through fal.ai.
+- **Fonts:** Instrument Sans and Instrument Serif, under the SIL Open Font License.
+- **The previous versions** keep their own credits in `v2/` and `v1/`.
 - **Made by** Jordi.
 
 ## Local preview
